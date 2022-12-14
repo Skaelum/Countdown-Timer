@@ -38,12 +38,11 @@ secondEntry.place(x=180, y=20)
 
 running = True
 
-
 def start():
-
-    temp = int(hour.get()) * 3600 + int(minute.get()) * 60 + int(second.get())
     global running
     running = True
+
+    temp = int(hour.get()) * 3600 + int(minute.get()) * 60 + int(second.get())
     while running:
         if temp >= 0:
             # divmod(firstvalue = temp//60, secondvalue = temp%60)
@@ -88,22 +87,41 @@ def reset():
     running = False
 
 
+def pause():
+    messagebox.showinfo("Time Countdown", "Time's Pause")
+    global running
+    running = False
+
+
+def resume():
+    messagebox.showinfo("Time Countdown", "Time's Resumed")
+    start()
+
+
 # def stop():
 #     messagebox.showinfo("Time Countdown", "Time's Stop")
-#     hour.set()
-#     minute.set()
-#     second.set()
 #     global running
 #     running = False
+#     hour.set.()
+#     minute.set()
+#     second.set()
+
 
 # button widget
-btn = Button(root, text='Start', bd='5',
-             command=start)
+btn = Button(root, text='Start', bd='5', command=start)
 btn.place(x=50, y=200)
 
-btn = Button(root, text='Reset', bd='5',
-             command=reset)
-btn.place(x=100, y=200)
+btn1 = Button(root, text='Reset', bd='5', command=reset)
+btn1.place(x=100, y=200)
+
+btn2 = Button(root, text='Pause', bd='5', command=pause)
+btn2.place(x=150, y=200)
+
+btn3 = Button(root, text='Resume', bd='5', command=resume)
+btn3.place(x=200, y=200)
+
+# btn4 = Button(root, text='Stop', bd='5', command=stop)
+# btn4.place(x=200, y=150)
 
 # btn = Button(root, text='stop', bd='5',
 #              command=stop)
